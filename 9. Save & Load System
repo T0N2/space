@@ -1,0 +1,23 @@
+using UnityEngine;
+
+public class SaveSystem : MonoBehaviour
+{
+    public PlayerController player;
+    
+    public void SaveGame()
+    {
+        PlayerPrefs.SetFloat("PlayerX", player.transform.position.x);
+        PlayerPrefs.SetFloat("PlayerY", player.transform.position.y);
+        PlayerPrefs.SetFloat("PlayerZ", player.transform.position.z);
+        Debug.Log("Game Saved!");
+    }
+
+    public void LoadGame()
+    {
+        float x = PlayerPrefs.GetFloat("PlayerX", 0);
+        float y = PlayerPrefs.GetFloat("PlayerY", 0);
+        float z = PlayerPrefs.GetFloat("PlayerZ", 0);
+        player.transform.position = new Vector3(x, y, z);
+        Debug.Log("Game Loaded!");
+    }
+}
