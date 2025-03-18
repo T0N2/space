@@ -1,0 +1,29 @@
+using UnityEngine;
+using UnityEngine.AI;
+
+public class EnemyAI : MonoBehaviour
+{
+    public Transform player;
+    private NavMeshAgent agent;
+    public float attackRange = 2f;
+
+    void Start()
+    {
+        agent = GetComponent<NavMeshAgent>();
+    }
+
+    void Update()
+    {
+        agent.SetDestination(player.position);
+        
+        if (Vector3.Distance(transform.position, player.position) < attackRange)
+        {
+            Attack();
+        }
+    }
+
+    void Attack()
+    {
+        Debug.Log("Enemy Attacking!");
+    }
+}
