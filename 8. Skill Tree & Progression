@@ -1,0 +1,24 @@
+using UnityEngine;
+
+public class SkillTree : MonoBehaviour
+{
+    public int playerLevel = 1;
+    public int experiencePoints = 0;
+    public int xpToNextLevel = 100;
+
+    void Update()
+    {
+        if (experiencePoints >= xpToNextLevel)
+        {
+            LevelUp();
+        }
+    }
+
+    void LevelUp()
+    {
+        playerLevel++;
+        experiencePoints = 0;
+        xpToNextLevel *= 2;
+        Debug.Log("Leveled Up! Current Level: " + playerLevel);
+    }
+}
