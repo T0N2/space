@@ -1,0 +1,21 @@
+using UnityEngine;
+
+public class PlayerController : MonoBehaviour
+{
+    public float speed = 5f;
+    public Camera playerCamera;
+    private Rigidbody rb;
+
+    void Start()
+    {
+        rb = GetComponent<Rigidbody>();
+    }
+
+    void Update()
+    {
+        float moveX = Input.GetAxis("Horizontal") * speed;
+        float moveZ = Input.GetAxis("Vertical") * speed;
+        Vector3 move = transform.right * moveX + transform.forward * moveZ;
+        rb.velocity = new Vector3(move.x, rb.velocity.y, move.z);
+    }
+}
