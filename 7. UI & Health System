@@ -1,0 +1,13 @@
+using UnityEngine;
+using UnityEngine.UI;
+
+public class UIManager : MonoBehaviour
+{
+    public Text healthText;
+    public InventorySystem inventory;
+
+    void Update()
+    {
+        healthText.text = "Health: " + PlayerPrefs.GetInt("PlayerHealth", 100);
+    }
+}
