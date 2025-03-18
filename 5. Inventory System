@@ -1,0 +1,17 @@
+using System.Collections.Generic;
+using UnityEngine;
+
+public class InventorySystem : MonoBehaviour
+{
+    public List<string> inventory = new List<string>();
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Item"))
+        {
+            inventory.Add(other.gameObject.name);
+            Destroy(other.gameObject);
+            Debug.Log("Picked up: " + other.gameObject.name);
+        }
+    }
+}
